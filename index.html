@@ -1,0 +1,1214 @@
+<!doctype html>
+<html lang="it" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>La Tua Vetrina — E-Commerce Enterprise</title>
+    <meta
+      name="description"
+      content="E-commerce enterprise demo con catalogo prodotti, carrello, checkout e gestione ordini. Realizzato con Bootstrap 5 e JavaScript."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="La Tua Vetrina — E-Commerce Enterprise"
+    />
+    <meta
+      property="og:description"
+      content="E-commerce enterprise demo con catalogo prodotti, carrello, checkout e gestione ordini. Bootstrap 5 + JavaScript."
+    />
+    <meta property="og:url" content="https://testscript.info/demo/bootstrap/" />
+    <meta
+      property="og:image"
+      content="https://testscript.info/img/cover-image_1080.jpg"
+    />
+    <meta property="og:site_name" content="testscript.info" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="La Tua Vetrina — E-Commerce Enterprise"
+    />
+    <meta
+      name="twitter:description"
+      content="E-commerce enterprise demo con catalogo, carrello e checkout."
+    />
+    <meta
+      name="twitter:image"
+      content="https://testscript.info/img/cover-image_1080.jpg"
+    />
+    <link rel="canonical" href="https://testscript.info/demo/bootstrap/">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareSourceCode",
+      "name": "La Tua Vetrina — E-Commerce Enterprise",
+      "description": "E-commerce enterprise demo con catalogo prodotti, carrello, checkout e gestione ordini.",
+      "url": "https://testscript.info/demo/bootstrap/",
+      "programmingLanguage": ["JavaScript", "HTML", "CSS"],
+      "runtimePlatform": "Browser",
+      "author": { "@type": "Person", "name": "Antonio Trapasso" }
+    }
+    </script>
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* ── Dark mode overrides for custom CSS ── */
+      [data-bs-theme="dark"] body {
+        background: #0f172a;
+        color: #e2e8f0;
+      }
+      [data-bs-theme="dark"] .navbar {
+        background: rgba(15, 23, 42, 0.9) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      [data-bs-theme="dark"] .navbar .nav-link {
+        color: #94a3b8;
+      }
+      [data-bs-theme="dark"] .navbar .nav-link:hover,
+      [data-bs-theme="dark"] .navbar .nav-link.active {
+        color: #60a5fa;
+      }
+      [data-bs-theme="dark"] .hero-section {
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+      }
+      [data-bs-theme="dark"] .product-card {
+        background: #1e293b;
+        border-color: rgba(255, 255, 255, 0.06);
+      }
+      [data-bs-theme="dark"] .product-card:hover {
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+      }
+      [data-bs-theme="dark"] .category-badge {
+        background: rgba(255, 255, 255, 0.06) !important;
+        color: #94a3b8 !important;
+      }
+      [data-bs-theme="dark"] .category-badge.active {
+        background: var(--brand-primary) !important;
+        color: #fff !important;
+      }
+      [data-bs-theme="dark"] .brand-text {
+        -webkit-text-fill-color: #60a5fa;
+      }
+      [data-bs-theme="dark"] .search-form .form-control {
+        background: #1e293b;
+        border-color: rgba(255, 255, 255, 0.1);
+        color: #e2e8f0;
+      }
+      [data-bs-theme="dark"] .offcanvas {
+        background: #1e293b;
+        color: #e2e8f0;
+      }
+      [data-bs-theme="dark"] footer {
+        background: #0f172a !important;
+      }
+      [data-bs-theme="dark"] .modal-content {
+        background: #1e293b;
+        color: #e2e8f0;
+      }
+      .theme-toggle-ecom {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        border: 1px solid #e2e8f0;
+        background: #f8f9fa;
+        color: #64748b;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        transition: all 0.25s;
+      }
+      .theme-toggle-ecom:hover {
+        background: #e2e8f0;
+        color: #334155;
+      }
+      [data-bs-theme="dark"] .theme-toggle-ecom {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.1);
+        color: #94a3b8;
+      }
+      [data-bs-theme="dark"] .theme-toggle-ecom:hover {
+        background: rgba(255, 255, 255, 0.12);
+        color: #e2e8f0;
+      }
+
+      /* ── Additional dark mode overrides ── */
+      [data-bs-theme="dark"] .product-img-wrap {
+        background: linear-gradient(135deg, #1e293b, #0f172a);
+      }
+      [data-bs-theme="dark"] .product-title {
+        color: #f1f5f9;
+      }
+      [data-bs-theme="dark"] .product-category {
+        color: #94a3b8;
+      }
+      [data-bs-theme="dark"] .product-body {
+        color: #cbd5e1;
+      }
+      [data-bs-theme="dark"] .product-actions .btn {
+        background: #1e293b;
+        border-color: rgba(255, 255, 255, 0.1);
+        color: #94a3b8;
+      }
+      [data-bs-theme="dark"] .product-actions .btn:hover {
+        background: var(--brand-primary);
+        border-color: var(--brand-primary);
+        color: #fff;
+      }
+      [data-bs-theme="dark"] .feature-card {
+        background: #1e293b;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+      }
+      [data-bs-theme="dark"] .feature-card:hover {
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+      }
+      [data-bs-theme="dark"] .cart-item {
+        border-bottom-color: rgba(255, 255, 255, 0.06);
+      }
+      [data-bs-theme="dark"] .cart-item-img {
+        background: #0f172a;
+      }
+      [data-bs-theme="dark"] .step-circle {
+        background: #334155;
+        color: #94a3b8;
+      }
+      [data-bs-theme="dark"] .step-line {
+        background: #334155;
+      }
+      [data-bs-theme="dark"] .text-muted {
+        color: #94a3b8 !important;
+      }
+      [data-bs-theme="dark"] .navbar .navbar-brand .brand-text {
+        -webkit-text-fill-color: #60a5fa;
+      }
+      [data-bs-theme="dark"] .bg-white {
+        background-color: transparent !important;
+      }
+      [data-bs-theme="dark"] .shadow-sm {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+      }
+
+    </style>
+    <link rel="stylesheet" href="../shared/social.css">
+  </head>
+  <body>
+    <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+    <nav class="navbar navbar-expand-lg sticky-top bg-white shadow-sm">
+      <div class="container">
+        <!-- Logo -->
+        <a
+          class="navbar-brand d-flex align-items-center gap-2 fw-bold"
+          href="#"
+        >
+          <div class="brand-icon">
+            <i class="bi bi-bag-heart-fill"></i>
+          </div>
+          <span class="brand-text">La Tua Vetrina</span>
+        </a>
+
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav mx-auto gap-1">
+            <li class="nav-item">
+              <a class="nav-link active" href="#"
+                ><i class="bi bi-house-door me-1"></i>Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#prodotti"
+                ><i class="bi bi-grid me-1"></i>Prodotti</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#offerte"
+                ><i class="bi bi-lightning me-1"></i>Offerte</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"
+                ><i class="bi bi-info-circle me-1"></i>Chi Siamo</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../"
+                ><i class="bi bi-grid-3x3-gap me-1"></i>Demo Hub</a
+              >
+            </li>
+          </ul>
+
+          <!-- Search -->
+          <form class="d-flex me-3 search-form" role="search">
+            <div class="input-group input-group-sm">
+              <input
+                type="search"
+                class="form-control"
+                placeholder="Cerca prodotti..."
+                id="searchInput"
+              />
+              <button class="btn btn-outline-primary" type="submit">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+          </form>
+
+          <!-- Theme Toggle -->
+          <button
+            class="theme-toggle-ecom me-2"
+            id="themeToggle"
+            title="Cambia tema"
+          >
+            <i class="bi bi-sun-fill"></i>
+          </button>
+
+          <!-- Cart Button -->
+          <button
+            class="btn btn-primary position-relative"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#cartOffcanvas"
+            id="cartBtn"
+          >
+            <i class="bi bi-cart3"></i>
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none"
+              id="cartCount"
+              >0</span
+            >
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ═══════════════════════ HERO ═══════════════════════ -->
+    <section class="hero-section position-relative overflow-hidden">
+      <div class="container py-5">
+        <div class="row align-items-center min-vh-50">
+          <div class="col-lg-6">
+            <span
+              class="badge bg-danger bg-opacity-10 text-danger fs-6 mb-3 px-3 py-2 rounded-pill"
+            >
+              <i class="bi bi-fire me-1"></i>Saldi fino al 50%
+            </span>
+            <h1 class="display-4 fw-800 lh-sm mb-3">
+              Scopri la <span class="text-gradient">Collezione</span> Esclusiva
+            </h1>
+            <p class="lead text-muted mb-4">
+              Prodotti premium selezionati per te. Qualità enterprise, prezzi
+              imbattibili. Spedizione gratuita per ordini sopra i €50.
+            </p>
+            <div class="d-flex gap-3 flex-wrap">
+              <a href="#prodotti" class="btn btn-primary btn-lg px-4">
+                <i class="bi bi-bag me-2"></i>Esplora Prodotti
+              </a>
+              <a href="#offerte" class="btn btn-outline-dark btn-lg px-4">
+                <i class="bi bi-lightning me-2"></i>Vedi Offerte
+              </a>
+            </div>
+            <!-- Trust Badges -->
+            <div class="d-flex gap-4 mt-4 pt-3 border-top">
+              <div class="text-center">
+                <div class="fw-bold text-primary fs-5">10K+</div>
+                <small class="text-muted">Clienti</small>
+              </div>
+              <div class="text-center">
+                <div class="fw-bold text-primary fs-5">4.9★</div>
+                <small class="text-muted">Rating</small>
+              </div>
+              <div class="text-center">
+                <div class="fw-bold text-primary fs-5">24h</div>
+                <small class="text-muted">Spedizione</small>
+              </div>
+              <div class="text-center">
+                <div class="fw-bold text-primary fs-5">30gg</div>
+                <small class="text-muted">Reso gratuito</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 text-center d-none d-lg-block">
+            <div class="hero-visual">
+              <i class="bi bi-bag-heart display-1 text-primary opacity-25"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-bg-shape"></div>
+    </section>
+
+    <!-- ═══════════════════ FLASH DEALS BANNER ═══════════════════ -->
+    <section class="bg-dark text-white py-3" id="offerte">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <h5 class="mb-0">
+              <i class="bi bi-lightning-fill text-warning me-2"></i>Flash Sale —
+              Termina tra:
+              <span class="text-warning fw-bold" id="countdown">02:59:59</span>
+            </h5>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <span class="badge bg-warning text-dark fs-6 me-2">-30%</span>
+            <span class="badge bg-danger fs-6 me-2">-50%</span>
+            <span>su prodotti selezionati!</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ CATEGORIES ═══════════════════ -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 class="fw-bold mb-0">Categorie</h3>
+          <div class="btn-group" role="group" id="filterBtns">
+            <button
+              class="btn btn-outline-primary btn-sm active"
+              data-filter="all"
+            >
+              Tutti
+            </button>
+            <button
+              class="btn btn-outline-primary btn-sm"
+              data-filter="elettronica"
+            >
+              Elettronica
+            </button>
+            <button class="btn btn-outline-primary btn-sm" data-filter="moda">
+              Moda
+            </button>
+            <button class="btn btn-outline-primary btn-sm" data-filter="casa">
+              Casa
+            </button>
+            <button class="btn btn-outline-primary btn-sm" data-filter="sport">
+              Sport
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ PRODUCT GRID ═══════════════════ -->
+    <section class="py-5 bg-light" id="prodotti">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="fw-800">I Nostri Prodotti</h2>
+          <p class="text-muted">
+            Selezionati con cura per offrirti solo il meglio
+          </p>
+        </div>
+        <div class="row g-4" id="productGrid">
+          <!-- Products injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ FEATURES ═══════════════════ -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row g-4 text-center">
+          <div class="col-md-3">
+            <div class="feature-card p-4">
+              <div class="feature-icon bg-primary bg-opacity-10 text-primary">
+                <i class="bi bi-truck fs-2"></i>
+              </div>
+              <h6 class="fw-bold mt-3">Spedizione Gratuita</h6>
+              <small class="text-muted">Per ordini sopra €50</small>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="feature-card p-4">
+              <div class="feature-icon bg-success bg-opacity-10 text-success">
+                <i class="bi bi-shield-check fs-2"></i>
+              </div>
+              <h6 class="fw-bold mt-3">Pagamento Sicuro</h6>
+              <small class="text-muted">Crittografia SSL 256-bit</small>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="feature-card p-4">
+              <div class="feature-icon bg-warning bg-opacity-10 text-warning">
+                <i class="bi bi-arrow-repeat fs-2"></i>
+              </div>
+              <h6 class="fw-bold mt-3">Reso Facile</h6>
+              <small class="text-muted">Entro 30 giorni</small>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="feature-card p-4">
+              <div class="feature-icon bg-info bg-opacity-10 text-info">
+                <i class="bi bi-headset fs-2"></i>
+              </div>
+              <h6 class="fw-bold mt-3">Supporto 24/7</h6>
+              <small class="text-muted">Sempre a tua disposizione</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ CART OFFCANVAS ═══════════════════ -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas">
+      <div class="offcanvas-header bg-primary text-white">
+        <h5 class="offcanvas-title">
+          <i class="bi bi-cart3 me-2"></i>Il Tuo Carrello
+        </h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"
+        ></button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column">
+        <div class="flex-grow-1 overflow-auto" id="cartItems">
+          <div class="text-center text-muted py-5" id="cartEmpty">
+            <i class="bi bi-cart-x display-4"></i>
+            <p class="mt-2">Il carrello è vuoto</p>
+          </div>
+        </div>
+        <div class="border-top pt-3" id="cartFooter" style="display: none">
+          <div class="d-flex justify-content-between mb-1">
+            <span>Subtotale:</span>
+            <span id="cartSubtotal">€0.00</span>
+          </div>
+          <div class="d-flex justify-content-between mb-1 text-success">
+            <span>Sconto:</span>
+            <span id="cartDiscount">-€0.00</span>
+          </div>
+          <div class="d-flex justify-content-between mb-1">
+            <span>Spedizione:</span>
+            <span id="cartShipping">€4.99</span>
+          </div>
+          <hr />
+          <div class="d-flex justify-content-between fw-bold fs-5 mb-3">
+            <span>Totale:</span>
+            <span class="text-primary" id="cartTotal">€0.00</span>
+          </div>
+          <!-- Coupon -->
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Codice sconto..."
+              id="couponInput"
+            />
+            <button class="btn btn-outline-success" id="applyCouponBtn">
+              <i class="bi bi-tag"></i>
+            </button>
+          </div>
+          <div class="text-success small mb-2 d-none" id="couponMsg"></div>
+          <button class="btn btn-primary btn-lg w-100" id="checkoutBtn">
+            <i class="bi bi-credit-card me-2"></i>Procedi al Pagamento
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ QUICK VIEW MODAL ═══════════════════ -->
+    <div class="modal fade" id="quickViewModal" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+          <div class="modal-body p-0">
+            <button
+              type="button"
+              class="btn-close position-absolute top-0 end-0 m-3 z-3"
+              data-bs-dismiss="modal"
+            ></button>
+            <div class="row g-0">
+              <div
+                class="col-md-5 bg-light d-flex align-items-center justify-content-center p-4"
+              >
+                <i
+                  class="bi product-quick-icon display-1 text-primary"
+                  id="qvIcon"
+                ></i>
+              </div>
+              <div class="col-md-7 p-4">
+                <span
+                  class="badge bg-primary bg-opacity-10 text-primary mb-2"
+                  id="qvCategory"
+                ></span>
+                <h4 class="fw-bold" id="qvName"></h4>
+                <div class="mb-2" id="qvStars"></div>
+                <p class="text-muted" id="qvDesc"></p>
+                <div class="d-flex align-items-center gap-3 mb-3">
+                  <span class="fs-3 fw-bold text-primary" id="qvPrice"></span>
+                  <span
+                    class="text-decoration-line-through text-muted"
+                    id="qvOriginal"
+                  ></span>
+                  <span class="badge bg-danger" id="qvDiscount"></span>
+                </div>
+                <div class="d-flex gap-2 mb-3">
+                  <div class="input-group" style="width: 130px">
+                    <button class="btn btn-outline-secondary" id="qvMinus">
+                      −
+                    </button>
+                    <input
+                      type="number"
+                      class="form-control text-center"
+                      value="1"
+                      min="1"
+                      id="qvQty"
+                    />
+                    <button class="btn btn-outline-secondary" id="qvPlus">
+                      +
+                    </button>
+                  </div>
+                </div>
+                <button class="btn btn-primary btn-lg w-100" id="qvAddCart">
+                  <i class="bi bi-cart-plus me-2"></i>Aggiungi al Carrello
+                </button>
+                <div class="mt-3 d-flex gap-3 small text-muted">
+                  <span><i class="bi bi-truck me-1"></i>Spedizione 24h</span>
+                  <span
+                    ><i class="bi bi-shield-check me-1"></i>Garanzia 2
+                    anni</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ CHECKOUT MODAL ═══════════════════ -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">
+              <i class="bi bi-credit-card me-2"></i>Pagamento Simulato
+            </h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!-- Stepper -->
+            <div class="checkout-stepper mb-4">
+              <div class="step-line"></div>
+              <div class="step active" data-step="1">
+                <div class="step-circle">1</div>
+                <small>Dati</small>
+              </div>
+              <div class="step" data-step="2">
+                <div class="step-circle">2</div>
+                <small>Pagamento</small>
+              </div>
+              <div class="step" data-step="3">
+                <div class="step-circle">3</div>
+                <small>Conferma</small>
+              </div>
+            </div>
+
+            <!-- Step 1: Dati personali -->
+            <div class="checkout-step" id="checkoutStep1">
+              <h5 class="fw-bold mb-3">
+                <i class="bi bi-person me-2"></i>Dati di Spedizione
+              </h5>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">Nome *</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="shipName"
+                    value="Mario"
+                    required
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Cognome *</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="shipSurname"
+                    value="Rossi"
+                    required
+                  />
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Email *</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="shipEmail"
+                    value="mario.rossi@example.com"
+                    required
+                  />
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Indirizzo *</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="shipAddress"
+                    value="Via Roma 42"
+                    required
+                  />
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Città *</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="shipCity"
+                    value="Milano"
+                    required
+                  />
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">CAP *</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="shipZip"
+                    value="20100"
+                    required
+                  />
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Provincia</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="shipProv"
+                    value="MI"
+                  />
+                </div>
+              </div>
+              <button class="btn btn-primary btn-lg w-100 mt-4" id="toStep2Btn">
+                Continua al Pagamento <i class="bi bi-arrow-right ms-2"></i>
+              </button>
+            </div>
+
+            <!-- Step 2: Pagamento -->
+            <div class="checkout-step d-none" id="checkoutStep2">
+              <h5 class="fw-bold mb-3">
+                <i class="bi bi-credit-card me-2"></i>Metodo di Pagamento
+              </h5>
+
+              <div class="list-group mb-3">
+                <label
+                  class="list-group-item list-group-item-action d-flex align-items-center gap-3"
+                >
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="payMethod"
+                    value="card"
+                    checked
+                  />
+                  <i class="bi bi-credit-card-2-front fs-4 text-primary"></i>
+                  <div>
+                    <div class="fw-bold">Carta di Credito/Debito</div>
+                    <small class="text-muted">Visa, Mastercard, Amex</small>
+                  </div>
+                </label>
+                <label
+                  class="list-group-item list-group-item-action d-flex align-items-center gap-3"
+                >
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="payMethod"
+                    value="paypal"
+                  />
+                  <i class="bi bi-paypal fs-4 text-info"></i>
+                  <div>
+                    <div class="fw-bold">PayPal</div>
+                    <small class="text-muted"
+                      >Paga con il tuo account PayPal</small
+                    >
+                  </div>
+                </label>
+                <label
+                  class="list-group-item list-group-item-action d-flex align-items-center gap-3"
+                >
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="payMethod"
+                    value="transfer"
+                  />
+                  <i class="bi bi-bank fs-4 text-success"></i>
+                  <div>
+                    <div class="fw-bold">Bonifico Bancario</div>
+                    <small class="text-muted">Pagamento tramite IBAN</small>
+                  </div>
+                </label>
+              </div>
+
+              <!-- Card form -->
+              <div id="cardForm">
+                <div class="row g-3">
+                  <div class="col-12">
+                    <label class="form-label">Numero Carta</label>
+                    <div class="input-group">
+                      <span class="input-group-text"
+                        ><i class="bi bi-credit-card"></i
+                      ></span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="4242 4242 4242 4242"
+                        id="cardNumber"
+                        maxlength="19"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Scadenza</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="MM/AA"
+                      id="cardExpiry"
+                      maxlength="5"
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">CVV</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="123"
+                        id="cardCvv"
+                        maxlength="3"
+                      />
+                      <span class="input-group-text"
+                        ><i class="bi bi-lock-fill text-success"></i
+                      ></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Order Summary -->
+              <div class="bg-light rounded p-3 mt-3">
+                <h6 class="fw-bold mb-2">Riepilogo Ordine</h6>
+                <div id="checkoutSummaryItems"></div>
+                <hr />
+                <div class="d-flex justify-content-between fw-bold fs-5">
+                  <span>Totale:</span>
+                  <span class="text-primary" id="checkoutTotal">€0.00</span>
+                </div>
+              </div>
+
+              <div class="d-flex gap-2 mt-4">
+                <button
+                  class="btn btn-outline-secondary btn-lg"
+                  id="backStep1Btn"
+                >
+                  <i class="bi bi-arrow-left me-1"></i>Indietro
+                </button>
+                <button
+                  class="btn btn-success btn-lg flex-grow-1"
+                  id="payNowBtn"
+                >
+                  <i class="bi bi-lock-fill me-2"></i>Paga Ora —
+                  <span id="payAmount">€0</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 3: Processing & Confirmation -->
+            <div
+              class="checkout-step d-none text-center py-4"
+              id="checkoutStep3"
+            >
+              <div id="processingView">
+                <div
+                  class="spinner-border text-primary mb-3"
+                  style="width: 3rem; height: 3rem"
+                  role="status"
+                ></div>
+                <h5>Elaborazione pagamento...</h5>
+                <p class="text-muted">Non chiudere questa finestra</p>
+                <div class="progress mt-3" style="height: 6px">
+                  <div
+                    class="progress-bar progress-bar-striped progress-bar-animated"
+                    id="payProgress"
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </div>
+              <div id="successView" class="d-none">
+                <div class="success-checkmark mb-3">
+                  <i class="bi bi-check-circle-fill text-success display-1"></i>
+                </div>
+                <h4 class="fw-bold text-success">Pagamento Completato!</h4>
+                <p class="text-muted mb-1">
+                  Ordine <strong id="orderNumber">#ORD-000000</strong>
+                </p>
+                <p class="text-muted mb-4">Riceverai una conferma via email</p>
+                <div
+                  class="bg-light rounded p-3 mb-4 text-start mx-auto"
+                  style="max-width: 350px"
+                >
+                  <div class="d-flex justify-content-between mb-1">
+                    <span>Articoli:</span><span id="confItems">0</span>
+                  </div>
+                  <div class="d-flex justify-content-between mb-1">
+                    <span>Totale pagato:</span
+                    ><span class="fw-bold text-primary" id="confTotal">€0</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Consegna stimata:</span
+                    ><span id="confDelivery">--</span>
+                  </div>
+                </div>
+                <button
+                  class="btn btn-primary btn-lg"
+                  data-bs-dismiss="modal"
+                  id="continueShopping"
+                >
+                  <i class="bi bi-bag me-2"></i>Continua lo Shopping
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ TOAST ═══════════════════ -->
+    <div
+      class="toast-container position-fixed bottom-0 end-0 p-3"
+      style="z-index: 1090"
+    >
+      <div
+        id="cartToast"
+        class="toast align-items-center text-bg-success border-0"
+        role="alert"
+      >
+        <div class="d-flex">
+          <div class="toast-body">
+            <i class="bi bi-check-circle me-2"></i
+            ><span id="toastMsg">Prodotto aggiunto!</span>
+          </div>
+          <button
+            type="button"
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ FOOTER ═══════════════════ -->
+    <footer class="bg-dark text-white pt-5 pb-3">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <h5 class="fw-bold mb-3">
+              <i class="bi bi-bag-heart-fill text-primary me-2"></i>La Tua
+              Vetrina
+            </h5>
+            <p class="text-white-50">
+              La destinazione premium per lo shopping online. Qualità
+              certificata, spedizioni express e supporto dedicato.
+            </p>
+            <div class="d-flex gap-3">
+              <a href="#" class="text-white-50 fs-5"
+                ><i class="bi bi-facebook"></i
+              ></a>
+              <a href="#" class="text-white-50 fs-5"
+                ><i class="bi bi-instagram"></i
+              ></a>
+              <a href="#" class="text-white-50 fs-5"
+                ><i class="bi bi-twitter-x"></i
+              ></a>
+              <a href="#" class="text-white-50 fs-5"
+                ><i class="bi bi-youtube"></i
+              ></a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-4">
+            <h6 class="fw-bold mb-3">Shop</h6>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none"
+                  >Tutti i Prodotti</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none"
+                  >Offerte</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none"
+                  >Novità</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none"
+                  >Bestseller</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-4">
+            <h6 class="fw-bold mb-3">Supporto</h6>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none">FAQ</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none"
+                  >Spedizioni</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none">Resi</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none"
+                  >Contattaci</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-4">
+            <h6 class="fw-bold mb-3">Newsletter</h6>
+            <p class="text-white-50 small">
+              Iscriviti per ricevere offerte esclusive.
+            </p>
+            <div class="input-group">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="La tua email..."
+              />
+              <button class="btn btn-primary">
+                <i class="bi bi-send"></i>
+              </button>
+            </div>
+            <div class="mt-3 d-flex gap-2">
+              <img
+                src="https://img.shields.io/badge/Visa-003087?style=flat&logo=visa&logoColor=white"
+                alt="Visa"
+                height="24"
+              />
+              <img
+                src="https://img.shields.io/badge/Mastercard-EB001B?style=flat&logo=mastercard&logoColor=white"
+                alt="Mastercard"
+                height="24"
+              />
+              <img
+                src="https://img.shields.io/badge/PayPal-00457C?style=flat&logo=paypal&logoColor=white"
+                alt="PayPal"
+                height="24"
+              />
+              <img
+                src="https://img.shields.io/badge/Apple_Pay-000?style=flat&logo=applepay&logoColor=white"
+                alt="Apple Pay"
+                height="24"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Tech Stack -->
+        <div
+          class="d-flex flex-wrap align-items-center gap-3 my-3 py-2 px-3 rounded-3"
+          style="background: rgba(255, 255, 255, 0.05)"
+        >
+          <span class="small text-white-50 fw-semibold me-1">Built with:</span>
+          <a
+            href="https://getbootstrap.com"
+            target="_blank"
+            class="text-decoration-none d-flex align-items-center gap-1 text-white-50"
+            title="Bootstrap 5"
+            style="transition: opacity 0.2s"
+            onmouseover="this.style.opacity = 1"
+            onmouseout="this.style.opacity = 0.7"
+          >
+            <svg width="18" height="18" viewBox="0 0 118 94" fill="none">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+                fill="#7c3aed"
+              />
+            </svg>
+            <small>Bootstrap 5</small>
+          </a>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+            target="_blank"
+            class="text-decoration-none d-flex align-items-center gap-1 text-white-50"
+            title="JavaScript"
+            style="transition: opacity 0.2s"
+            onmouseover="this.style.opacity = 1"
+            onmouseout="this.style.opacity = 0.7"
+          >
+            <svg width="18" height="18" viewBox="0 0 256 256">
+              <rect width="256" height="256" rx="20" fill="#F7DF1E" />
+              <text
+                x="175"
+                y="205"
+                fill="#000"
+                font-size="130"
+                font-weight="bold"
+                font-family="sans-serif"
+              >
+                JS
+              </text>
+            </svg>
+            <small>JavaScript</small>
+          </a>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/CSS"
+            target="_blank"
+            class="text-decoration-none d-flex align-items-center gap-1 text-white-50"
+            title="CSS3"
+            style="transition: opacity 0.2s"
+            onmouseover="this.style.opacity = 1"
+            onmouseout="this.style.opacity = 0.7"
+          >
+            <svg width="18" height="18" viewBox="0 0 256 361">
+              <path
+                d="M127.844 360.088L23.662 331.166.445 70.766h255.11l-23.241 260.36-104.47 28.962z"
+                fill="#264de4"
+              />
+              <path
+                d="M212.417 314.547l19.86-222.49H128V337.95l84.417-23.403z"
+                fill="#2965f1"
+              />
+              <path
+                d="M53.669 188.636l2.862 32.006H128v-31.995H53.669zm-5.752-64.641l2.903 32.006H128v-31.995H47.917zM128 271.994l-.14.037-35.568-9.604-2.274-25.471H58.025l4.474 50.146 65.34 18.129L128 305.189v-33.195z"
+                fill="#ebebeb"
+              />
+              <path
+                d="M127.886 188.636v32.006h37.888l-3.574 39.965-34.314 9.274v33.235l65.4-18.142.482-5.398 7.507-84.076.779-8.864H127.886zm0-64.641v31.995h66.16l.64-7.178 1.456-16.182.763-8.635h-69.02z"
+                fill="#fff"
+              />
+            </svg>
+            <small>CSS3</small>
+          </a>
+          <span class="text-white-50 opacity-25">·</span>
+          <a href="../" class="text-white-50 text-decoration-none"
+            ><small>Demo Hub</small></a
+          >
+        </div>
+        <hr class="my-3 border-secondary" />
+        <div
+          class="d-flex flex-wrap justify-content-between small text-white-50"
+        >
+          <span>© 2026 La Tua Vetrina — Demo Bootstrap Enterprise</span>
+          <span>
+            <a href="#" class="text-white-50 text-decoration-none me-3"
+              >Privacy</a
+            >
+            <a href="#" class="text-white-50 text-decoration-none me-3"
+              >Termini</a
+            >
+            <a href="#" class="text-white-50 text-decoration-none">Cookie</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ═══════════════════ BACK TO TOP ═══════════════════ -->
+    <button
+      class="btn btn-primary btn-back-to-top shadow"
+      id="backToTop"
+      title="Torna su"
+    >
+      <i class="bi bi-chevron-up"></i>
+    </button>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      (() => {
+        const html = document.documentElement;
+        const btn = document.getElementById("themeToggle");
+        const saved = localStorage.getItem("demoBootstrap_theme");
+        if (saved) html.setAttribute("data-bs-theme", saved);
+        function updateIcon() {
+          const isDark = html.getAttribute("data-bs-theme") === "dark";
+          btn.innerHTML = isDark
+            ? '<i class="bi bi-sun-fill"></i>'
+            : '<i class="bi bi-moon-stars-fill"></i>';
+        }
+        updateIcon();
+        btn.addEventListener("click", () => {
+          const next =
+            html.getAttribute("data-bs-theme") === "dark" ? "light" : "dark";
+          html.setAttribute("data-bs-theme", next);
+          localStorage.setItem("demoBootstrap_theme", next);
+          updateIcon();
+        });
+      })();
+    </script>
+    <script src="../shared/social.js"></script>
+
+    <!-- Social Share Bar -->
+    <div class="social-share">
+      <a
+        href="#"
+        class="share-fb"
+        title="Condividi su Facebook"
+        onclick="shareOn('facebook')"
+        ><i class="bi bi-facebook"></i
+      ></a>
+      <a href="#" class="share-x" title="Condividi su X" onclick="shareOn('x')"
+        ><i class="bi bi-twitter-x"></i
+      ></a>
+      <a
+        href="#"
+        class="share-li"
+        title="Condividi su LinkedIn"
+        onclick="shareOn('linkedin')"
+        ><i class="bi bi-linkedin"></i
+      ></a>
+      <a
+        href="#"
+        class="share-wa"
+        title="Condividi su WhatsApp"
+        onclick="shareOn('whatsapp')"
+        ><i class="bi bi-whatsapp"></i
+      ></a>
+      <a
+        href="#"
+        class="share-tg"
+        title="Condividi su Telegram"
+        onclick="shareOn('telegram')"
+        ><i class="bi bi-telegram"></i
+      ></a>
+    </div>
+  </body>
+</html>
